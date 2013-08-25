@@ -37,7 +37,6 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    alsa.msm8960 \
     audio.a2dp.default \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
@@ -105,16 +104,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.logs=0 \
     debug.sf.hw=1 \
     dev.pm.dyn_samplingrate=1 \
-    lpa.decode=false \
-    tunnel.decode=true \
-    tunnel.audiovideo.decode=true \
+    lpa.decode=true \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
     persist.audio.speaker.location=high \
     persist.hwc.mdpcomp.enable=true \
     persist.thermal.monitor=true \
-    ro.opengles.version=131072 \
     ro.qc.sdk.audio.fluencetype=fluence \
     ro.use_data_netmgrd=true \
     wifi.interface=wlan0
