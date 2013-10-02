@@ -29,9 +29,9 @@
 #define SCALING_GOVERNOR_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
 #define BOOSTPULSE_ONDEMAND "/sys/devices/system/cpu/cpufreq/ondemand/boostpulse"
 #define BOOSTPULSE_INTERACTIVE "/sys/devices/system/cpu/cpufreq/interactive/boostpulse"
-#define SAMPLING_RATE_SCREEN_ON "50000"
+#define SAMPLING_RATE_SCREEN_ON "500000"
 #define SAMPLING_RATE_SCREEN_OFF "500000"
-#define TIMER_RATE_SCREEN_ON "30000"
+#define TIMER_RATE_SCREEN_ON "500000"
 #define TIMER_RATE_SCREEN_OFF "500000"
 
 struct cm_power_module {
@@ -129,6 +129,11 @@ static void configure_governor()
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/io_is_busy", "1");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor", "4");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/down_differential", "10");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core", "60");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core", "3");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/optimal_freq", "918000");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sync_freq", "1026000");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load", "80");
 
     } else if (strncmp(governor, "interactive", 11) == 0) {
         sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/min_sample_time", "90000");
